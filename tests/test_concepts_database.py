@@ -10,18 +10,27 @@ import pathlib
 pathlib.Path(__file__).parent.absolute()
 
 class Test_ConceptsDatabase(unittest.TestCase):
-    _tests_path = str(pathlib.Path(__file__).parent.absolute())
+    _TESTS_PATH = str(pathlib.Path(__file__).parent.absolute())
 
     def test_1_load_database(self):
         # define a db of concepts
         my_concepts_db = concepts_database.ConceptsDatabase()
 
         # load a testing one
-        file_name = self._tests_path + "/simple_file_1.csv"
+        file_name = self._TESTS_PATH + "/simple_file_1.csv"
         my_concepts_db.load_concepts(file_name, ";")
         my_concepts_db.print_db()
-        self.assertTrue(True, "Concepts loaded succesfully")
+        self.assertTrue(True)
 
+    def test_2_create_simple_concept(self):
+        my_concept = concepts_database.ConceptElement("Bismillah kebabish")
+        print(my_concept)
+        self.assertTrue(True)
+
+    def test_3_create_complete_concept(self):
+        my_concept = concepts_database.ConceptElement("00801", "Bismillah", "Restaurante")
+        print(my_concept)
+        self.assertTrue(True)
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,6 +2,18 @@ from datetime import date
 from tabulate import tabulate
 import pandas as pd
 
+class ConceptElement:
+    _AVAILABLE_FIELDS = ["Concept Name", "Alias", "Category"]
+
+    def __init__(self, name="", alias="", category=""):
+        self._name = name
+        self._alias = alias
+        self._category = category
+
+    def __str__(self):
+        message = f"Concept:\nName: {self._name}. Alias: {self._alias}. Category: {self._category}"
+        return message
+
 class ConceptsDatabase:
 
     def __init__(self):
