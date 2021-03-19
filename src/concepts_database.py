@@ -19,5 +19,5 @@ class ConceptsDatabase:
         return message
     
     def print_db(self):
-        print(tabulate(self._saved_concepts, headers='keys', tablefmt='psql'))
+        print("\n",tabulate(self._saved_concepts, headers='keys', tablefmt='psql'),sep="")
         return None
