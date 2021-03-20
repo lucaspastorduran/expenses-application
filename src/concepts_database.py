@@ -5,7 +5,7 @@ import pandas as pd
 class ConceptElement:
     _AVAILABLE_FIELDS = ["Concept Name", "Alias", "Category"]
 
-    def __init__(self, name="", alias="", category=""):
+    def __init__(self, name, alias="", category=""):
         self._name = name
         self._alias = alias
         self._category = category
