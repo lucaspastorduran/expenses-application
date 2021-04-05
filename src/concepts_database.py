@@ -14,12 +14,12 @@ class ConceptElement:
         self._alias = alias
         self._category = category
 
-    def is_in_database(self, saved_concepts_df):
+    def is_in_database(self, saved_concepts_df:pd.DataFrame):
         # Check if already there is a row with same "Concept Name"
         return self._name in saved_concepts_df[self._NAME_FIELD]
 
     def convert_to_dict(self):
-        concept_dict = {self._NAME_FIELD:self._name, _ALIAS_FIELD:self._alias, self._CATEGORY_FIELD:self._category}
+        concept_dict = {self._NAME_FIELD:self._name, self._ALIAS_FIELD:self._alias, self._CATEGORY_FIELD:self._category}
         return concept_dict
 
     def __str__(self):
@@ -37,21 +37,21 @@ class ConceptsDatabase:
         self._creation_date = date.today()
         # initialize saved_concepts database
         path = self._DEFAULT_DATABASE_PATH if db_path == None else db_path
-        delimiter = sself._DEFAULT_DELIMITER if delimiter_char == None else delimiter_char
-        self._saved_concepts = pd.read_csv(path=path, delimiter=self._DEFAULT_DELIMITER)
-        return self
-
-    def load_concepts(self, file_path, delim):
-        # Load concepts saved as .csv in a pd.Dataframe
-        self._saved_concepts = pd.read_csv(path=file_path, delimiter=delim)
+        delimiter = self._DEFAULT_DELIMITER if delimiter_char == None else delimiter_char
+        self._saved_concepts = pd.read_csv(path, delimiter=delimiter)
         return None
 
-    def add_concept(self, concept_element):
+    def load_concepts(self, file_path:str, delim:str):
+        # Load concepts saved as .csv in a pd.Dataframe
+        self._saved_concepts = pd.read_csv(file_path, delimiter=delim)
+        return None
+
+    def add_concept(self, concept_element:ConceptElement):
         # Check if concept already exists
         if not concept_element.is_in_database(self._saved_concepts):
             # Add concept if is not already
             concept_dict = concept_element.convert_to_dict()
-            self._saved_concepts.append(concept_dict)
+            self._saved_concepts.append(concept_dict, ignore_index=True)
         return None
 
     def __str__(self):
