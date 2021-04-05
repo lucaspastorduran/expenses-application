@@ -2,9 +2,8 @@ from concepts_database import ConceptsDatabase, ConceptElement
 
 class ExpensesApp:
 
-    def __init__ (self, db_path, db_delimiter):
-        my_concepts = ConceptsDatabase()
-        my_concepts.load_concepts(db_path, db_delimiter)
+    def __init__ (self, db_path:str, db_delimiter:str):
+        my_concepts = ConceptsDatabase(db_path, db_delimiter)
         self._concepts_database = my_concepts
 
     def __str__(self):
