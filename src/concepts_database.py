@@ -51,7 +51,7 @@ class ConceptsDatabase:
         if not concept_element.is_in_database(self._saved_concepts):
             # Add concept if is not already
             concept_dict = concept_element.convert_to_dict()
-            self._saved_concepts.append(concept_dict, ignore_index=True)
+            self._saved_concepts = self._saved_concepts.append(concept_dict, ignore_index=True)
         return None
 
     def __str__(self):
