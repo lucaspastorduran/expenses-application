@@ -1,4 +1,4 @@
-from concepts_database import ConceptsDatabase
+from concepts_database import ConceptsDatabase, ConceptElement
 
 class ExpensesApp:
 

@@ -38,6 +38,18 @@ class Test_ConceptsDatabase(unittest.TestCase):
         print(my_concept)
         self.assertTrue(True)
 
+    def test_5_add_new_concept(self):
+        # define a db of concepts
+        file_name = self._TESTS_PATH + "/simple_file_1.csv"
+        delimiter = ";"
+        my_concepts_db = concepts_database.ConceptsDatabase(file_name, delimiter)
+        my_concepts_db.print_db()
+        # add new concept
+        new_concept = concepts_database.ConceptElement("2019293", "Pizza sports bar", "Restaurante")
+        my_concepts_db.add_concept(new_concept)
+        my_concepts_db.print_db()
+        self.assertTrue(True)
+
 if __name__ == '__main__':
     unittest.main()
 
