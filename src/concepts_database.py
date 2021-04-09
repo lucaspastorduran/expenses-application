@@ -16,7 +16,8 @@ class ConceptElement:
 
     def is_in_database(self, saved_concepts_df:pd.DataFrame):
         # Check if already there is a row with same "Concept Name"
-        return self._name in saved_concepts_df[self._NAME_FIELD]
+        saved_names = saved_concepts_df[self._NAME_FIELD].to_list()
+        return self._name in saved_names
 
     def convert_to_dict(self):
         concept_dict = {self._NAME_FIELD:self._name, self._ALIAS_FIELD:self._alias, self._CATEGORY_FIELD:self._category}
