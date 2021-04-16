@@ -13,6 +13,7 @@ class ConceptElement:
         self._name = name
         self._alias = alias
         self._category = category
+        return None
 
     def is_in_database(self, saved_concepts_df:pd.DataFrame):
         # Check if already there is a row with same "Concept Name"
